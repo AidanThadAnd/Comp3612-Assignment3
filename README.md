@@ -1,2 +1,23 @@
-
 - https://star-pattern-appalachiosaurus.glitch.me/api/circuits
+- https://star-pattern-appalachiosaurus.glitch.me/api/circuits/1
+- https://star-pattern-appalachiosaurus.glitch.me/api/constructors
+- https://star-pattern-appalachiosaurus.glitch.me/api/constructors/mclaren
+- https://star-pattern-appalachiosaurus.glitch.me/api/coNSTruCTors/mclaren
+- https://star-pattern-appalachiosaurus.glitch.me/api/constructors/javascript
+- https://star-pattern-appalachiosaurus.glitch.me/api/constructorResults/mclaren/2023
+- https://star-pattern-appalachiosaurus.glitch.me/api/constructorResults/MERCEDES/2020
+- https://star-pattern-appalachiosaurus.glitch.me/api/constructorResults/mclaren/2040
+- https://star-pattern-appalachiosaurus.glitch.me/api/constructorResults/comp3612/2023
+- https://star-pattern-appalachiosaurus.glitch.me/api/drivers
+- https://star-pattern-appalachiosaurus.glitch.me/api/drivers/hamilton
+- https://star-pattern-appalachiosaurus.glitch.me/api/drivers/HAMilton
+- https://star-pattern-appalachiosaurus.glitch.me/api/drivers/randy
+- https://star-pattern-appalachiosaurus.glitch.me/api/driverResults/piastre/2023
+- https://star-pattern-appalachiosaurus.glitch.me/api/driverResults/piastre/2002
+- https://star-pattern-appalachiosaurus.glitch.me/api/races/season/2023
+- https://star-pattern-appalachiosaurus.glitch.me/api/races/seasoning/2023
+- https://star-pattern-appalachiosaurus.glitch.me/api/races/season/2032
+- https://star-pattern-appalachiosaurus.glitch.me/api/results/race/1100
+- https://star-pattern-appalachiosaurus.glitch.me/api/results/race/1756348576
+- https://star-pattern-appalachiosaurus.glitch.me/api/results/season/2023
+- https://star-pattern-appalachiosaurus.glitch.me/api/results/season/2034
