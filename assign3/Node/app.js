@@ -4,20 +4,22 @@ const express = require("express")
 const app = express()
 
 //Base case "/" returns a welcome message
-app.get("/", (req,resp)=>{resp.send("Welcome to the Formula 1 API")})
+app.get("/api", (req,resp)=>{resp.send("Welcome to the Formula 1 API")})
 
+function readJson(fileName){
+    const jsonPath = path.join("../", "data", fileName)
+    const jsonData = fs.readFileSync(jsonPath, "utf8")
+    return JSON.parse(jsonData)
+}
 
 //Circuits APIs
 const circuitFileName="circuits.json"
-const circuitJsonPath = path.join("../", "data", circuitFileName)
-
-const circuitJsonData = fs.readFileSync(circuitJsonPath, "utf8")
-const circuits = JSON.parse(circuitJsonData)
+const circuits = readJson(circuitFileName)
 
 //handle request for all circuits
-app.get("/circuits", (req,resp)=>{resp.json(circuits)})
+app.get("/api/circuits", (req,resp)=>{resp.json(circuits)})
 //handle request for specific circuit
-app.get("/circuits/:id", (req,resp)=>{
+app.get("/api/circuits/:id", (req,resp)=>{
     const id = req.params.id
 
     const foundCircuits = circuits.filter(c=>c.circuitId==id)
@@ -35,15 +37,12 @@ app.get("/circuits/:id", (req,resp)=>{
 
 //constructors APIs
 const constructorFileName="constructors.json"
-const constructorJsonPath = path.join("../", "data", constructorFileName)
-
-const constructorJsonData = fs.readFileSync(constructorJsonPath, "utf8")
-const constructors = JSON.parse(constructorJsonData)
+const constructors = readJson(constructorFileName)
 
 //handle request for all constructors
-app.get("/constructors", (req,resp)=>{resp.json(constructors)})
+app.get("/api/constructors", (req,resp)=>{resp.json(constructors)})
 //handle request for specific constructor
-app.get("/constructors/:ref", (req,resp)=>{
+app.get("/api/constructors/:ref", (req,resp)=>{
     const ref = req.params.ref
     const foundConstructors=constructors.filter(c=>c.constructorRef=ref)
 
@@ -60,15 +59,11 @@ app.get("/constructors/:ref", (req,resp)=>{
 
 //Drivers APIs
 const driverFileName="drivers.json"
-const driverJsonPath = path.join("../", "data", driverFileName)
-
-const driverJsonData = fs.readFileSync(driverJsonPath, "utf8")
-const drivers = JSON.parse(driverJsonData)
-
+const drivers = readJson(driverFileName)
 //handle request for all drivers
-app.get("/drivers", (req,resp)=>{resp.json(drivers)})
+app.get("/api/drivers", (req,resp)=>{resp.json(drivers)})
 //handle request for specific driver
-app.get("/drivers/:ref", (req,resp)=>{
+app.get("/api/drivers/:ref", (req,resp)=>{
     const ref = req.params.ref
     console.log(ref)
     const foundDrivers=drivers.filter(d=>d.driverRef=ref)
@@ -80,14 +75,10 @@ app.get("/drivers/:ref", (req,resp)=>{
 
 //races APIs
 const raceFileName = "races.json"
-const raceJsonPath = path.join("../", "data", raceFileName)
+const races = readJson(raceFileName)
 
-const raceJsonData = fs.readFileSync(raceJsonPath, "utf8")
-const races = JSON.parse(raceJsonData)
-
-app.get("/races", (req,resp)=>{resp.json(races)})
-//handle request for specific races
-app.get("/races/season/:year", (req,resp)=>{
+//handle request for specific race season
+app.get("/api/races/season/:year", (req,resp)=>{
     const season = req.params.year
 
     const foundRace = races.filter(r=>r.year==season)
@@ -97,7 +88,8 @@ app.get("/races/season/:year", (req,resp)=>{
     resp.json(foundRace)
 })
 
-app.get("/races/id/:id", (req,resp)=>{
+//handle request for specific race id
+app.get("/api/races/id/:id", (req,resp)=>{
     const id = req.params.id
 
     const foundRace = races.filter(r=>r.id==id)
@@ -109,13 +101,10 @@ app.get("/races/id/:id", (req,resp)=>{
 
 //results APIs
 const resultsFileName = "results.json"
-const resultsJsonPath = path.join("../", "data", resultsFileName)
+const results = readJson(resultsFileName)
 
-const resultsJsonData = fs.readFileSync(resultsJsonPath, "utf8")
-const results = JSON.parse(resultsJsonData)
-
-//ConstructorsResults
-app.get("/constructorResults/:constructorRef/:season", (req,resp)=>{
+//ConstructorsResults for season
+app.get("/api/constructorResults/:constructorRef/:season", (req,resp)=>{
     const season = req.params.season
     const constructorRef = req.params.constructorRef
 
@@ -127,8 +116,8 @@ app.get("/constructorResults/:constructorRef/:season", (req,resp)=>{
     resp.json(foundConstructorResults)
 })
 
-//DriverResults
-app.get("/driverResults/:driverRef/:season", (req,resp)=>{
+//DriverResults for season
+app.get("/api/driverResults/:driverRef/:season", (req,resp)=>{
     const season = req.params.season
     const driverRef = req.params.driverRef
 
@@ -141,8 +130,8 @@ app.get("/driverResults/:driverRef/:season", (req,resp)=>{
 })
 
 
-//RaceResults
-app.get("/results/race/:id", (req,resp)=>{
+//RaceResults for raceId
+app.get("/api/results/race/:id", (req,resp)=>{
     const id = req.params.id
 
     const foundRaceResults = results.filter(r=>(r.race.id == id))
@@ -154,12 +143,10 @@ app.get("/results/race/:id", (req,resp)=>{
 })
 
 //SeasonResults
-app.get("/results/season/:year", (req,resp)=>{
+app.get("/api/results/season/:year", (req,resp)=>{
     const season = req.params.year
 
     const foundSeasonResults = results.filter(r=>(r.race.year == season))
-
-    
 
     if(foundSeasonResults.length==0)
         return resp.json({error: {message: "Value not found or Incorrect query string values"}})
