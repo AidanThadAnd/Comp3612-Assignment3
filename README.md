@@ -40,12 +40,30 @@ As of December 7th, 2024 the API is currently hosted on glitch.com. All requests
 - https://star-pattern-appalachiosaurus.glitch.me/api/results/season/2034
 
 ### NOTE:
-- */api/constructors/javascript* **WILL RETURN AN ERROR** due to invalid constructor "javascript"
-- */api/constructorResults/mclaren/2040* **WILL RETURN AN ERROR** due to the invalid year "2024"
-- */api/constructorResults/comp3612/2023* **WILL RETURN AN ERROR** due to invalid consturctorRef "comp3612"
-- */api/drivers/randy* **WILL RETURN AN ERROR** due to invalid driver Reference "randy"
-- */api/driverResults/piastre/2002* **WILL RETURN AN ERROR** due to invalid name + year
-- */api/races/seasoning/2023* **WILL RETURN AN ERROR** due to invalid API endpoint "seasoning"
-- */api/races/season/2032* **WILL RETURN AN ERROR** due to invalid season "2032"
-- */api/results/race/1756348576* **WILL RETURN AN ERROR** due to invalid raceID "1756348576"
-- */api/results/season/2034* **WILL RETURN AN ERROR** due to invalid year "2034"
+- */api/constructors/javascript*
+    - **WILL RETURN AN ERROR** 
+        - due to invalid constructor "javascript"
+- */api/constructorResults/mclaren/2040* 
+    - **WILL RETURN AN ERROR** 
+        - due to the invalid year "2024"
+- */api/constructorResults/comp3612/2023* 
+    - **WILL RETURN AN ERROR** 
+        - due to invalid consturctorRef "comp3612"
+- */api/drivers/randy* 
+    - **WILL RETURN AN ERROR** 
+        - due to invalid driver Reference "randy"
+- */api/driverResults/piastre/2002* 
+    - **WILL RETURN AN ERROR** 
+        - due to invalid name + year
+- */api/races/seasoning/2023* 
+    - **WILL RETURN AN ERROR** 
+        - due to invalid API endpoint "seasoning"
+- */api/races/season/2032* 
+    - **WILL RETURN AN ERROR** 
+        - due to invalid season "2032"
+- */api/results/race/1756348576* 
+    - **WILL RETURN AN ERROR** 
+        - due to invalid raceID "1756348576"
+- */api/results/season/2034* 
+    - **WILL RETURN AN ERROR** 
+        - due to invalid year "2034"
